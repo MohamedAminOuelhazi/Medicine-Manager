@@ -1,0 +1,51 @@
+<div class="container mx-auto p-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Vos Médicaments</h2>
+  
+    <!-- Liste des médicaments -->
+     @for (medicine of medicines; track $index) {
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
+            <h3 class="text-2xl font-semibold text-gray-700">{{ medicine.name }}</h3>
+            
+            <!-- Affichage de la dose selon l'option -->
+            <div class="mt-4">
+              <p class="text-lg text-gray-500">
+                Dose : 
+                @if (medicine.doseOption === 'normal') {
+                  <span>{{ medicine.normalDose }} unités</span>
+                }
+                @if (medicine.doseOption === 'perDay') {
+                  <span>Dose par jour</span>
+                }
+              </p>
+        
+              <!-- Affichage de la dose par jour -->
+               @if (medicine.doseOption === 'perDay') {
+                  <div  class="mt-2">
+                      <h4 class="font-medium text-gray-600">Doses par Jour</h4>
+                      <div class="space-y-2 mt-2">
+                          @for (day of getDays(medicine.dosePerDay); track $index) {
+                              <div class="flex justify-between text-gray-600">
+                                  <span>{{ day.day }}</span>
+                                  <span class="font-semibold">{{ day.dose }}</span>
+                                </div>
+                          }
+                      </div>
+                    </div>
+               }
+      
+        
+              <!-- Affichage de la dose normale -->
+               @if (medicine.doseOption === 'normal') {
+                  <div class="mt-2">
+                      <p class="text-lg font-semibold">Dose normale: {{ medicine.normalDose }} unités</p>
+                  </div>
+               }
+      
+            </div>
+        
+          
+          </div>
+     }
+
+  </div>
+  

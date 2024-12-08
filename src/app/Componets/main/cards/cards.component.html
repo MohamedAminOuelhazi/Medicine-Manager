@@ -1,0 +1,29 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+    <!-- Medicines Card -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-semibold text-blue-gray-800">Vos médicaments</h3>
+      <p class="text-blue-gray-600 mt-2">Vous avez {{ countMedicines() }} médicaments dans votre programme.</p>
+      <button routerLink="/getmedicine" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">View Details</button>
+    </div>
+
+    <!-- Add Medicine Card -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-semibold text-blue-gray-800">Ajouter un nouveau médicament</h3>
+      <p class="text-blue-gray-600 mt-2">Ajoutez rapidement de nouveaux médicaments à votre emploi du temps.</p>
+      <button routerLink="/medicine" class="mt-4 bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-600">Add Medicine</button>
+    </div>
+
+    <!-- Reminders Card -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+      <h3 class="text-xl font-semibold text-blue-gray-800">Supprimer tout</h3>
+      <p class="text-blue-gray-600 mt-2">Supprimer tout les médicaments à votre programme</p>
+      <button class="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" (click)="supp()">Supprimer</button>
+    </div>
+  </div>
+
+@if (isDeleted) {
+  <div class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 font-semibold rounded-md shadow-md">
+    <p class="text-lg">
+    Tous les médicaments ont été supprimés.</p>
+  </div>
+}

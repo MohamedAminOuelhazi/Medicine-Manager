@@ -1,0 +1,136 @@
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Ajouter un Nouveau Médicament</h2>
+    <form (ngSubmit)="addMedicine()">      <!-- Nom du Médicament -->
+      <div class="mb-4">
+        <label for="medicineName" class="block text-sm font-medium text-gray-700">Nom du Médicament</label>
+        <input
+          type="text"
+          id="medicineName"
+          [(ngModel)]="medicineName"
+          name="medicineName"
+          class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="Entrez le nom du médicament"
+        />
+      </div>
+  
+      <!-- Choisir entre "par jour" ou "normal" -->
+      <div class="mb-4">
+        <label for="doseOption" class="block text-sm font-medium text-gray-700">Mode de Prise</label>
+        <select
+          id="doseOption"
+          [(ngModel)]="doseOption"
+          name="doseOption"
+          class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        >
+          <option value="normal">Normal</option>
+          <option value="perDay">Par Jour</option>
+        </select>
+      </div>
+  
+      <!-- Cas "Par Jour" -->
+@if (doseOption === 'perDay') {
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Doses par Jour</label>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="mb-2">
+                <label for="monday" class="block text-sm font-medium text-gray-700">Lundi</label>
+                <select id="monday" name="monday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.monday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="tuesday" class="block text-sm font-medium text-gray-700" >Mardi</label>
+                <select id="tuesday" name="tuesday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.tuesday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="wednesday" class="block text-sm font-medium text-gray-700" >Mercredi</label>
+                <select id="wednesday" name="wednesday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.wednesday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="thursday" class="block text-sm font-medium text-gray-700" >Jeudi</label>
+                <select id="thursday" name="thursday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.thursday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="friday" class="block text-sm font-medium text-gray-700" >Vendredi</label>
+                <select id="friday" name="friday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.friday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="saturday" class="block text-sm font-medium text-gray-700"  >Samedi</label>
+                <select id="saturday" name="saturday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md" [(ngModel)]="dosePerDay.saturday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="sunday" class="block text-sm font-medium text-gray-700">Dimanche</label>
+                <select id="sunday" name="sunday" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md"  [(ngModel)]="dosePerDay.sunday">
+                  <option value="1/4">1/4</option>
+                  <option value="1/2">1/2</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+        </div>
+      </div>
+}
+
+  
+      <!-- Cas "Normal" -->
+@if (doseOption === 'normal') {
+    <div class="mb-2">
+        <label for="normalDoseInput" class="block text-sm font-medium text-gray-700">Nombre de Doses par Jour</label>
+        <select id="normalDoseInput" name="normalDoseInput" class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md">
+          <option value="1/4">1/4</option>
+          <option value="1/2">1/2</option>
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+}
+
+  
+      <!-- Bouton d'ajout -->
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="px-6 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        >
+          Ajouter le Médicament
+        </button>
+      </div>
+    </form>
+  </div>
+  
